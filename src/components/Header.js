@@ -1,10 +1,12 @@
 import React from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
+import { Navbar, NavbarBrand, Container } from 'reactstrap';
 
 const Header = () => {    
     return(
-        <Navbar color="success" dark>
-            <NavbarBrand href="/">SpecScale</NavbarBrand>
+        <Navbar color="success" className="mb-4" dark>
+            <Container>
+                <NavbarBrand href="/">SpecScale</NavbarBrand>
+            </Container>
         </Navbar>
     );
 }
