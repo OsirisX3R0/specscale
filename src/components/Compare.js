@@ -30,15 +30,16 @@ const Compare = () => {
 
     return(
         <Fragment>
+            <h2>Pit two CSS selectors head to head to see which one is more specific.</h2>
             {error && <Alert color="danger">{error}</Alert>}
             <Row>
-                <Col xs="6">
+                <Col xs="12" sm="6">
                     <FormGroup>
                         <Label for="selector1">Selector #1</Label>
                         <Input bsSize="lg" id="selector1" value={selector1} onChange={handleSelectorChange} />                        
                     </FormGroup>
                 </Col>
-                <Col xs="6">
+                <Col xs="12" sm="6">
                     <FormGroup>
                         <Label for="selector2">Selector #2</Label>
                         <Input bsSize="lg" id="selector2" value={selector2} onChange={handleSelectorChange} />
@@ -51,16 +52,16 @@ const Compare = () => {
             <Row>
                 <Col xs="6">
                     {spec1 > 0 && 
-                        <div className="text-center display-4">
-                            <div>{selector1}</div>
+                        <div className="text-center display-2">
+                            <h3>{selector1}</h3>
                             <div className={spec1 > spec2 ? "text-success" : "text-danger"}>{spec1}</div>
                         </div>
                     }
                 </Col>
                 <Col xs="6">
                     {spec2 > 0 && 
-                        <div className="text-center display-4">
-                            <div>{selector2}</div>
+                        <div className="text-center display-2">
+                            <h3>{selector2}</h3>
                             <div className={spec2 > spec1 ? "text-success" : "text-danger"}>{spec2}</div>
                         </div>
                     }
