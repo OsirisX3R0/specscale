@@ -4,6 +4,7 @@ import Compare from './components/Compare';
 import Footer from './components/Footer';
 import { Container } from 'reactstrap';
 import 'bootswatch/dist/solar/bootstrap.css';
+import './App.css';
 
 function App() {
   return (
