@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,OACI,cAAe,CACf,QAAS,CACT,MAAO,CACP,UACJ","file":"main.924eef24.chunk.css","sourcesContent":["footer {\r\n    position: fixed;\r\n    bottom: 0;\r\n    left: 0;\r\n    width: 100%;\r\n}"]}
