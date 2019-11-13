@@ -38,7 +38,7 @@ const Compare = () => {
         <Fragment>
             {!comparison &&
                 <Fragment>
-                    <h5 className='text-secondary'>Pit two CSS selectors head to head to see which one is more specific</h5>
+                    <h5 className='text-secondary'>chicken Pit two CSS selectors head to head to see which one is more specific</h5>
                     {error && <Alert color="danger">{error}</Alert>}
                     <Row>
                         <Col xs="12" sm="6">
