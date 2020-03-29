@@ -42,7 +42,7 @@ const Compare = () => {
                     <Input type="text" dark={dark} value={selector2} onChange={(e) => setSelector2(e.target.value)} />
 
                     <CompareButton onClick={compareSelectors}>Compare!</CompareButton>
-                    <ResetButton dark={dark}>Reset</ResetButton>
+                    <ResetButton dark={dark} onClick={() => reset()}>Reset</ResetButton>
                 </Grid>
             )
         }

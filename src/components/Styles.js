@@ -19,6 +19,7 @@ export const Heading = styled.h1`
 `;
 
 export const Logo = styled.img`
+    width: 100px;
     margin: 0 auto;
     display: block;
 `;
