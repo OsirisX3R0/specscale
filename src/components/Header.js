@@ -5,12 +5,17 @@ import { GlobalContext } from '../context/GlobalContext';
 import { ThemeIcon, ThemeButton, Heading, Logo } from './Styles';
 
 const Header = () => {
-    const { dark, setDark } = useContext(GlobalContext);
+    const { dark, setDark, setSavedTheme } = useContext(GlobalContext);
+
+    const updateTheme = () => {
+        setSavedTheme(!dark ? 'dark' : 'light');
+        setDark(!dark);
+    }
 
     return(
         <>
             <ThemeIcon>
-                <ThemeButton onClick={() => setDark(!dark)}>
+                <ThemeButton onClick={() => updateTheme()}>
                     <FontAwesomeIcon icon={dark ? faSun : faMoon} />
                 </ThemeButton>
             </ThemeIcon>

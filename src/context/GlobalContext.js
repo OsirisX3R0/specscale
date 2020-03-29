@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { createGlobalStyle } from 'styled-components';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const GlobalStyle = createGlobalStyle`    
     body {
@@ -18,10 +19,17 @@ export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
     const [dark, setDark] = useState(false);
+    const [savedTheme, setSavedTheme] = useLocalStorage('theme');
+
+    useEffect(() => {
+        setDark(savedTheme == 'dark')
+    }, [])
     return (
         <GlobalContext.Provider value={{
             dark,
-            setDark
+            setDark,
+            savedTheme, 
+            setSavedTheme
         }}>
             <GlobalStyle dark={dark}/>
             {children}
