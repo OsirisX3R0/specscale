@@ -1,20 +1,21 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Compare from './components/Compare';
 import Footer from './components/Footer';
 import { Container } from 'reactstrap';
-import 'bootswatch/dist/solar/bootstrap.css';
-import './App.css';
+import { GlobalProvider } from './context/GlobalContext'
+//import 'bootswatch/dist/solar/bootstrap.css';
+import './App.scss';
 
-function App() {
+const App = () => {
   return (
-      <Fragment>
+      <GlobalProvider>
         <Header />
         <Container>
           <Compare />
         </Container>
         <Footer />
-      </Fragment>
+      </GlobalProvider>
   );
 }
 

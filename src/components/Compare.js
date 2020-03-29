@@ -1,23 +1,18 @@
-import React, { Fragment, useState } from 'react';
-import { Row, Col, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+import React, { useState, useContext } from 'react';
 import { compare, calculate } from 'specificity';
+import { Container, Grid, Alert, Label, Input, CompareButton, ResetButton, Results, Result, Selector, Specificity, CompareMoreButton } from './Styles';
+import { GlobalContext } from '../context/GlobalContext';
 
 const Compare = () => {
+    const { dark } = useContext(GlobalContext);
     const [selector1, setSelector1] = useState('');
     const [selector2, setSelector2] = useState('');
     const [spec1, setSpec1] = useState('');
     const [spec2, setSpec2] = useState('');
     const [comparison, setComparison] = useState(null);
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
 
-    function handleSelectorChange (e) {
-        if (e.target.id === 'selector1')
-            setSelector1(e.target.value)
-        else if (e.target.id === 'selector2')
-            setSelector2(e.target.value)
-    }
-
-    function compareSelectors () {
+    const compareSelectors = () => {
         if (selector1 === '' || selector2 === '') {
             setError('Please enter two selectors.')
             return;
@@ -28,70 +23,53 @@ const Compare = () => {
         setSpec2(calculate(selector2)[0].specificity);//Array.join("");
     }
 
-    function reset () {
+    const reset = () => {
         setSelector1('')
         setSelector2('')
         setComparison(null)
     }
 
-    return(
-        <Fragment>
-            {!comparison &&
-                <Fragment>
-                    <h5 className='text-secondary'>Pit two CSS selectors head to head to see which one is more specific</h5>
+    const display = () => {
+        if (!comparison) {
+            return (
+                <Grid>
                     {error && <Alert color="danger">{error}</Alert>}
-                    <Row>
-                        <Col xs="12" sm="6">
-                            <FormGroup>
-                                <Label for="selector1">Selector #1</Label>
-                                <Input bsSize="lg" id="selector1" value={selector1} onChange={handleSelectorChange} />                        
-                            </FormGroup>
-                        </Col>
-                        <Col xs="12" sm="6">
-                            <FormGroup>
-                                <Label for="selector2">Selector #2</Label>
-                                <Input bsSize="lg" id="selector2" value={selector2} onChange={handleSelectorChange} />
-                            </FormGroup>
-                        </Col>
-                    </Row>
 
-                    <Button color="info" onClick={compareSelectors}>Compare!</Button>
-                </Fragment>
-            }
+                    <Label htmlFor="selector1">Selector #1</Label>
+                    <Input type="text" dark={dark} value={selector1} onChange={(e) => setSelector1(e.target.value)} />                        
+                
+                    <Label htmlFor="selector2">Selector #2</Label>
+                    <Input type="text" dark={dark} value={selector2} onChange={(e) => setSelector2(e.target.value)} />
 
-            {comparison && 
-                <Fragment>
-                    <Row className='my-3'>
-                        <Col xs="6">
-                            <div className="text-center display-4">
-                                <h5>{selector1}</h5>
-                                <div className={
-                                    comparison > 0 
-                                        ? "text-success" 
-                                        : comparison === 0 
-                                            ? "text-secondary"
-                                            : "text-danger"
-                                    }>{spec1}</div>
-                            </div>
-                        </Col>
-                        <Col xs="6">
-                            <div className="text-center display-4">
-                                <h5>{selector2}</h5>
-                                <div className={
-                                    comparison < 0 
-                                        ? "text-success" 
-                                        : comparison === 0 
-                                            ? "text-secondary"
-                                            : "text-danger"
-                                    }>{spec2}</div>
-                            </div>
-                        </Col>
-                    </Row>
+                    <CompareButton onClick={compareSelectors}>Compare!</CompareButton>
+                    <ResetButton dark={dark}>Reset</ResetButton>
+                </Grid>
+            )
+        }
 
-                    <Button color="info" onClick={reset} block>Compare some more!</Button>
-                </Fragment>
-            }
-        </Fragment>
+        return (
+            <Results>
+                <Result>
+                    <Selector>{selector1}</Selector>
+                    <Specificity comparison={comparison > 0}>{spec1}</Specificity>
+                </Result>
+                <Result>
+                    <Selector>{selector2}</Selector>
+                    <Specificity comparison={comparison < 0}>{spec2}</Specificity>
+                </Result>
+
+                <CompareMoreButton color="info" onClick={reset} block>Compare some more!</CompareMoreButton>
+            </Results>
+        )
+    }
+
+    return(
+        <Container>
+            <h5 className='text-secondary'>Pit two CSS selectors head to head to see which one is more specific</h5>
+            
+            {display()}
+            
+        </Container>
     );
 }
 
