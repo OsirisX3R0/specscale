@@ -19,8 +19,8 @@ const Compare = () => {
         }
         setError(null);
         setComparison(compare(selector1, selector2));
-        setSpec1(calculate(selector1)[0].specificity);//Array.join("");
-        setSpec2(calculate(selector2)[0].specificity);//Array.join("");
+        setSpec1(calculate(selector1)[0].specificity);
+        setSpec2(calculate(selector2)[0].specificity);
     }
 
     const reset = () => {
@@ -29,11 +29,19 @@ const Compare = () => {
         setComparison(null)
     }
 
+    const displayError = () => {
+        if (error) {
+            return <Alert color="danger">{error}</Alert>
+        }
+
+        return null;
+    }
+
     const display = () => {
         if (!comparison) {
             return (
                 <Grid>
-                    {error && <Alert color="danger">{error}</Alert>}
+                    {displayError()}
 
                     <Label htmlFor="selector1">Selector #1</Label>
                     <Input type="text" dark={dark} value={selector1} onChange={(e) => setSelector1(e.target.value)} />                        
