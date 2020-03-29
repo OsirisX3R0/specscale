@@ -16,7 +16,7 @@ const Header = () => {
         <>
             <ThemeIcon>
                 <ThemeButton onClick={() => updateTheme()}>
-                    <FontAwesomeIcon icon={dark ? faSun : faMoon} />
+                    <FontAwesomeIcon icon={dark ? faSun : faMoon} size="lg" />
                 </ThemeButton>
             </ThemeIcon>
             <Logo src="logo192.png" />
