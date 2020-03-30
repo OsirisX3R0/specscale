@@ -101,10 +101,7 @@ export const Selector = styled.h5`
 `;
 
 export const Specificity = styled.div`
-    color: ${props => (props.comparison 
-                ? '#f20' 
-                : '#09a'
-            )};
+    color: ${props => (props.comparison ? '#09a' : '#f20')};
     font-size: 2rem;
 `;
 
