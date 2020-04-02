@@ -23,7 +23,8 @@ export const GlobalProvider = ({ children }) => {
 
     useEffect(() => {
         setDark(savedTheme === 'dark')
-    }, [])
+    }, [savedTheme])
+
     return (
         <GlobalContext.Provider value={{
             dark,
