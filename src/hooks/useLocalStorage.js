@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const useLocalStorage = key => {
-    const [storageKey, setStorageKey] = useState(key);
+    const [storageKey] = useState(key);
 
     const value = JSON.parse(localStorage.getItem(storageKey));
 

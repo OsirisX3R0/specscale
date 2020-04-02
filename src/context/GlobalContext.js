@@ -22,7 +22,7 @@ export const GlobalProvider = ({ children }) => {
     const [savedTheme, setSavedTheme] = useLocalStorage('theme');
 
     useEffect(() => {
-        setDark(savedTheme == 'dark')
+        setDark(savedTheme === 'dark')
     }, [])
     return (
         <GlobalContext.Provider value={{
