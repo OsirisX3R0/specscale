@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { GlobalContext } from '../context/GlobalContext';
 import { ThemeIcon, ThemeButton, Heading, Logo } from './Styles';
+import logo from '../img/logo192.png'
 
 const Header = () => {
     const { dark, setDark, setSavedTheme } = useContext(GlobalContext);
@@ -19,7 +20,7 @@ const Header = () => {
                     <FontAwesomeIcon icon={dark ? faSun : faMoon} size="lg" />
                 </ThemeButton>
             </ThemeIcon>
-            <Logo src="logo192.png" />
+            <Logo src={logo} />
             <Heading>SpecScale</Heading>
         </>
     );
