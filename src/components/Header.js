@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { GlobalContext } from '../context/GlobalContext';
 import { ThemeIcon, ThemeButton, Heading, Logo } from './Styles';
-const logo = require('../assets/logo192.png');
+import logo from '../assets/logo192.png';
 
 const Header = () => {
     const { dark, setDark, setSavedTheme } = useContext(GlobalContext);
