@@ -1,6 +1,7 @@
 {
   "short_name": "Specscale",
   "name": "Specscale",
+  "description": "Pit two CSS selectors head to head to see which one is more specific",
   "icons": [
     {
       "src": "favicon.ico",
